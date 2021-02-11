@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="Spring框架概述 Spring是轻量级的开源的JavaEE框架 Spring可以解决企业应用开发的复杂性 Spring有两个核心部分：IOC和Aop IOC：控制反转，创建对象的过程交给Spring管理 Aop：面向切面，不修改源代码进行功能增强   Spring特点 方便解耦，简化开发 Aop编程 方便测试 方便整合其他框架 方便进行事务操作 降低API开发难度 十分经典">
+<meta name="description" content="Spring框架概述 Spring是轻量级的开源的JavaEE框架 Spring可以解决企业应用开发的复杂性 Spring有两个核心部分：IOC和Aop IOC：控制反转，创建对象的过程交给Spring管理 Aop：面向切面，不修改源代码进行功能增强   Spring特点 方便解耦，简化开发 Aop编程 方便测试 方便整合其他框架 方便进行事务操作 降低API开发难度 代码十分经典     #Sp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring1">
 <meta property="og:url" content="http://example.com/2021/02/11/Spring1/index.html">
 <meta property="og:site_name" content="TanPro&#39;s Blog">
-<meta property="og:description" content="Spring框架概述 Spring是轻量级的开源的JavaEE框架 Spring可以解决企业应用开发的复杂性 Spring有两个核心部分：IOC和Aop IOC：控制反转，创建对象的过程交给Spring管理 Aop：面向切面，不修改源代码进行功能增强   Spring特点 方便解耦，简化开发 Aop编程 方便测试 方便整合其他框架 方便进行事务操作 降低API开发难度 十分经典">
+<meta property="og:description" content="Spring框架概述 Spring是轻量级的开源的JavaEE框架 Spring可以解决企业应用开发的复杂性 Spring有两个核心部分：IOC和Aop IOC：控制反转，创建对象的过程交给Spring管理 Aop：面向切面，不修改源代码进行功能增强   Spring特点 方便解耦，简化开发 Aop编程 方便测试 方便整合其他框架 方便进行事务操作 降低API开发难度 代码十分经典     #Sp">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-02-11T11:09:41.000Z">
-<meta property="article:modified_time" content="2021-02-11T11:44:32.186Z">
+<meta property="article:modified_time" content="2021-02-11T16:49:47.508Z">
 <meta property="article:author" content="LoveListener">
 <meta name="twitter:card" content="summary">
 
@@ -366,10 +366,130 @@
 <li>方便整合其他框架</li>
 <li>方便进行事务操作</li>
 <li>降低API开发难度</li>
-<li>十分经典</li>
+<li>代码十分经典</li>
 </ul>
 </li>
 </ul>
+<hr>
+<p>#Spring结构</p>
+<ul>
+<li>第一层：Data Access/Integration（数据访问/集成）<ul>
+<li>JDBC</li>
+<li>ORM（Object Relation Mapping，对象关系映射）</li>
+<li>OXM（不用管）</li>
+<li>JMS（不用管）</li>
+<li>Transactions（简写为tx，事务）</li>
+</ul>
+</li>
+<li>第一层：Web<ul>
+<li>WebSocket（新的技术）</li>
+<li>Servlet（对应web包，原生的web相关）</li>
+<li>Web（对应webmvc包，开发web应用的组件）</li>
+<li>Portlet</li>
+</ul>
+</li>
+<li>第二层：AOP+Aspects（面向切面编程）</li>
+<li>第三层：Core Container：核心容器（IOC）<ul>
+<li>包括的jar包：<ul>
+<li>Beans</li>
+<li>Core</li>
+<li>Context</li>
+<li>SpringExpressionLanguage</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第四层：Test层：Spring的单元测试模块，比JUnit方便</li>
+</ul>
+<blockquote>
+<p>以上各个部分都有对应的jar包，共64个jar包，一般建议用哪个模块导哪个包</p>
+</blockquote>
+<hr>
+<p>开发Spring框架的应用，应该先写框架的配置文件，或者直接安装插件<br>在这里我为了方便，直接使用了老师提供的eclipse版本和对应的插件</p>
+<p>大致步骤</p>
+<ul>
+<li>查找Eclipse版本和对应的插件版本</li>
+<li>在Eclipse内部安装插件</li>
+<li><a href="https://www.bilibili.com/video/BV1uE411C7CW?p=12" target="_blank">视频连接</a></li>
+</ul>
+<hr>
+<p>#Spring相关技术</p>
+<ul>
+<li><p><strong>Spring</strong></p>
+<ul>
+<li><strong>IOC（Inversion Of Control，控制反转）</strong><ul>
+<li>Structs2</li>
+<li>Hibernate</li>
+<li>MyBatis</li>
+</ul>
+</li>
+<li><strong>AOP</strong><ul>
+<li>声明式事务</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>控制反转的理解</p>
+<ul>
+<li>主动new资源（对象）变为被动接受（容器new的）资源。</li>
+<li>这里的容器是一系列类的管理者，可以帮助我们根据类之间的包含关系创建对象。</li>
+</ul>
+</li>
+<li><p>控制反转的应用：DI（Dependency Injection）依赖注入</p>
+<ul>
+<li>原理：如果类A运行需要类B，容器通过反射的形式，将B对象（利用反射给属性赋值后产生）注入到类A中</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>#框架编写流程</p>
+<ul>
+<li>导包</li>
+<li>写配置</li>
+<li>测试</li>
+</ul>
+<hr>
+<p>#写HelloWorld过程</p>
+<ul>
+<li><p>导包</p>
+<ul>
+<li>导核心包：Beans,Core,Context,ExpressionLanguage到项目中新建的lib文件夹下</li>
+<li>build path添加到项目中</li>
+<li>同理导入commons-logging包</li>
+</ul>
+</li>
+<li><p>写配置</p>
+<ul>
+<li><p>添加spring bean configuration file</p>
+</li>
+<li><p>先写好具有属性、getter、sertter、toString的类，然后在配置文件中加入如下内容（举例）：</p>
+<ul>
+<li>一个bean标签对应一个对象，一个property标签对应一个属性</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;person0&quot; class&#x3D;&quot;com.atguigu.bean.Person&quot;&gt;</span><br><span class="line">	&lt;property name&#x3D;&quot;lastName&quot; value&#x3D;&quot;张三&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">	&lt;property name&#x3D;&quot;age&quot; value&#x3D;&quot;18&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">	&lt;property name&#x3D;&quot;email&quot; value&#x3D;&quot;1@qq.com&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">	&lt;property name&#x3D;&quot;gender&quot; value&#x3D;&quot;male&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;bean&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>测试</p>
+<ul>
+<li>如果是新换的Eclipse，需要导包使用，教程：<ul>
+<li><a href="https://www.bilibili.com/video/BV1uE411C7CW?p=14" target="_blank">教程第14分钟</a></li>
+</ul>
+</li>
+<li>在test类中程序如下<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Test                     </span><br><span class="line">public void test() &#123;</span><br><span class="line">	ApplicationContext ioc &#x3D; new ClassPathXmlApplicationContext(&quot;ioc.xml&quot;);</span><br><span class="line">	&#x2F;&#x2F;这时获得ioc容器，同时创建了person01对象，并对其属性进行了赋值</span><br><span class="line">	Person person01 &#x3D; (Person) ioc.getBean(&quot;person01&quot;);</span><br><span class="line">	System.out.println(person01);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>一个低级错误：把ioc.xml配置到了project下而非src下导致系统找不到xml文件</p>
+</li>
+<li><p>细节问题</p>
+<ul>
+<li>可以在project下新建一个source folder用来存放ioc.xml，由于所有的source文件在编译后都放在/bin目录下，所以ClassPathXmlApplicationContext搜索ioc.xml文件时不会失败</li>
+<li>FileSystemXmlApplicationContext(“F://ioc.xml”);可以通过绝对路径寻找ioc.xml，从而创建ioc容器</li>
+<li>容器中各组件都是单实例的。</li>
+<li>xml文件中的property标签内的name属性，与类中的setXxx对应的xxx字符串，应当相同。而不是类的属性名。所以推荐所有的getter和setter都使用自动生成的名字不要乱改。</li>
+</ul>
+</li>
+</ul>
+<hr>
 
       
     </div>
@@ -487,7 +607,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -498,7 +618,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
