@@ -261,6 +261,1185 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/18/Spring4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TanPro's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/18/Spring4/" itemprop="url">Spring4</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-18T21:00:43+08:00">
+                2021-02-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/18/Spring3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TanPro's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/18/Spring3/" itemprop="url">Spring3</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-18T12:05:24+08:00">
+                2021-02-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="实验十五：通过注解分别创建Dao、Service、Controller"><a href="#实验十五：通过注解分别创建Dao、Service、Controller" class="headerlink" title="实验十五：通过注解分别创建Dao、Service、Controller"></a>实验十五：通过注解分别创建Dao、Service、Controller</h2><ul>
+<li>新建工程</li>
+<li>导包5个</li>
+<li>创建源码文件夹，写配置</li>
+<li>三个类：Dao,Service,Servlet，分布放在三个包中</li>
+<li>这些类加上对应的注解：servlet加controller，service加service，dao加repository（推荐这样加，增加可读性）</li>
+<li>通过context名称空间，告诉Spring扫描添加了注解的组件</li>
+<li>可以通过@注解(“xxx”)将将要注册的类的id改为xxx</li>
+<li>说明：<ul>
+<li>Spring四个注解：<ul>
+<li>Controller：控制器，推荐给控制器层的组件加这个注释（servlet包下的）</li>
+<li>Service：业务逻辑，推荐业务逻辑层的组件添加这个注释</li>
+<li>Repository：给数据库层（持久化层）的组件添加</li>
+<li>Component：其他的（比如工具类）推荐这个注解</li>
+</ul>
+</li>
+<li>context:component-scan的作用<ul>
+<li>设置了参数base-package后，其对应的路径和该路径的子包下的java文件中，所有带有service，component，repository，controller这些注解的类都会被注册为bean,id默认为类名（首字母小写）</li>
+</ul>
+</li>
+<li>一定要导入aop包，因为它支持注解<h2 id="实验十六：指定扫描时不包含的类"><a href="#实验十六：指定扫描时不包含的类" class="headerlink" title="实验十六：指定扫描时不包含的类"></a>实验十六：指定扫描时不包含的类</h2></li>
+</ul>
+</li>
+<li>context:component-scan base-package { { type expression* * 不同的type:<ul>
+<li>annotation：按照注解排除</li>
+<li>assignable：按照类排除</li>
+</ul>
+</li>
+</ul>
+<h2 id="实验十七：指定扫描包时要包含的类"><a href="#实验十七：指定扫描包时要包含的类" class="headerlink" title="实验十七：指定扫描包时要包含的类"></a>实验十七：指定扫描包时要包含的类</h2><ul>
+<li>context:component-scan base-package user-default-filters=”false”<br>  { { type expression        </li>
+<li>说明：<ul>
+<li>这里的user-default-filters=”false”的作用是禁用默认规则，因为默认规则是扫描所有base-package包下的类，而这里只扫描指定包下的类</li>
+</ul>
+</li>
+</ul>
+<h2 id="实验十八-二十二：-Autowired的使用"><a href="#实验十八-二十二：-Autowired的使用" class="headerlink" title="实验十八~二十二：@Autowired的使用"></a>实验十八~二十二：@Autowired的使用</h2><ul>
+<li> 配置文件中扫描包com.atguigu</li>
+<li> 类bookservlet中private service，类service中dao，dao中一句输出</li>
+<li> servlet doget方法，service save方法</li>
+<li> 以上所有的private属性都没有new，如果什么都不加，会报空指针异常</li>
+<li> 在private属性service和dao上加@autowired注解，表示自动为这个属性装配</li>
+<li>说明:<ul>
+<li>以上程序依赖于三样东西：配置文件，@Controller/Service/Repository，@Autowired</li>
+<li>运行顺序为：@Controller/Service/Repository将当前类在配置文件中注册为一个bean，然后@Autowired将注册好的bean配置给类的属性</li>
+<li>核心步骤就是autowired注解在配置文件中找属性对应的bean，找的过程如下<ul>
+<li>先按照类型找 getbean(class)</li>
+<li>如果找不到，抛异常</li>
+<li>如果找到多个，按照 id=”属性名” 来找</li>
+<li>如果找不到，报错，但是可以使用 @Qualifier(“配置文件中存在的bean的id名”) 注解加在对应的属性上，这样的话spring在自动装配时，会在配置文件中找这个id名对应的bean而不是按照属性名去查找 </li>
+<li>如果 @Qualifier 都找不到，就会报错。</li>
+<li>如果自动装配的注解写为：＠Autowired(Required=false)</li>
+</ul>
+</li>
+<li>autowired注解可以用在<strong>方法形参</strong>上<ul>
+<li>如果在配置文件中配置一个对象bean1，这个对象所属的类有一个autowired注解的方法func(BookDao bookDao)，那么在这个bean1在容器启动的时候会被创建，同时对应的func也会执行</li>
+</ul>
+</li>
+<li><strong>autowired注解</strong>和<strong>resource注解</strong>之间的区别<ul>
+<li>resource注解是javaEE中的</li>
+<li>autowired注解是spring中的，功能更强大，比如可以设置required=false</li>
+<li>resource注解是java标准，功能较基础，但是可扩展性强，如果切换成spring之外的容器框架，还是可以使用，但是spring不行。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Spring的单元测试"><a href="#Spring的单元测试" class="headerlink" title="Spring的单元测试"></a>Spring的单元测试</h2><ul>
+<li>导入spring-test包</li>
+<li>Test类上加contextConfiguration(locations=”classpath:xxx.xml”)注解</li>
+<li>Test类上加@RunWith(SpringJUnit4ClassRunner.class)</li>
+<li>spring先根据contextConfiguration注解定位配置文件，然后根据runwith注解中声明的类来执行test测试方法，test类中如果有autowired注解的变量，那么这个变量可以被spring自动从刚才定位的配置文件中找到对应的bean并且装配上，不需要调用getbean方法</li>
+</ul>
+<h2 id="实验二十三：测试泛型依赖注入"><a href="#实验二十三：测试泛型依赖注入" class="headerlink" title="实验二十三：测试泛型依赖注入"></a>实验二十三：测试泛型依赖注入</h2><ul>
+<li>新建项目</li>
+<li>导包*6（之前五个加上aop包）</li>
+<li>添加源码包和配置文件</li>
+<li>添加service包和bookservice,userservice类</li>
+<li>添加dao包和bookdao,userdao类，basedao<t><ul>
+<li>添加bean包和Book类，让bookdao继承basedao<book></li>
+<li>user同理</li>
+</ul>
+</li>
+<li>basedao 抽象方法 save，然后分别写bookdao和userdao的save方法</li>
+<li>bookservice调用bookdao的save，user同理</li>
+<li>service和dao添加注解，配置文件中扫描包，实现注册</li>
+<li>service中的dao属性用autowired自动装配</li>
+<li>测试成功</li>
+</ul>
+<hr>
+<ul>
+<li>添加baseservice<T>，写它的dao属性（加注解）和save方法，然后让bookservice和userservice继承之，并且删除bookservice和userservice中的save方法</li>
+<li>在测试中，new service并调用save方法成功</li>
+<li>说明<ul>
+<li>泛型依赖注入是spring4.0后新增的一个功能</li>
+<li>第二部分成功的原因：<ul>
+<li>测试方法中声明了一个bookservice对象</li>
+<li>spring发现bookservice继承了baseservice<book>，而后者有一个basedao<book>属性，而bookdao正是继承了basedao<book>，并且配置文件中有已经被注册的bookdao类</li>
+<li>spring发现虽然baseservice没有注册，但是test方法中使用的是它的两种具体类型的继承：bookservice和userservice，而这两种继承出来的类都通过@service注册了</li>
+<li>spring于是给bookservice装配好了bookdao，user同理</li>
+<li>总结：bookservice(注册成功)-&gt;baseservice（未注册）-&gt;basedao（未注册）-&gt;bookdao(注册成功)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="源码调试"><a href="#源码调试" class="headerlink" title="源码调试"></a>源码调试</h2><ul>
+<li>给helloworld的每一个关键步骤设置断点</li>
+<li>方法：翻译、放行、看注释</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/15/SpringBoot2-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TanPro's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/15/SpringBoot2-2/" itemprop="url">SpringBoot2_2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-15T20:51:10+08:00">
+                2021-02-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/springboot2/" itemprop="url" rel="index">
+                    <span itemprop="name">springboot2</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="容器功能"><a href="#容器功能" class="headerlink" title="容器功能"></a>容器功能</h1><h2 id="添加组件"><a href="#添加组件" class="headerlink" title="添加组件"></a>添加组件</h2><ul>
+<li>src/main/java/包/（新建）config/新建一个类 MyConfig<ul>
+<li>MyConfig 加标签 @Configuration</li>
+<li>写一个返回自定义类的方法，方法加标签 @Bean<ul>
+<li>此方法名为组件id</li>
+<li>返回类型就是组件类型 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/13/SpringBoot2-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TanPro's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/13/SpringBoot2-1/" itemprop="url">SpringBoot2编写HelloWorld程序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-13T22:37:49+08:00">
+                2021-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/springboot2/" itemprop="url" rel="index">
+                    <span itemprop="name">springboot2</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="maven检查"><a href="#maven检查" class="headerlink" title="maven检查"></a>maven检查</h2><ul>
+<li>检查本地maven环境</li>
+<li>修改maven的配置文件，更新<strong>mirror和profile</strong>标签内容</li>
+</ul>
+<h2 id="创建工程"><a href="#创建工程" class="headerlink" title="创建工程"></a>创建工程</h2><ul>
+<li>创建工程之前，idea-&gt;configure-&gt;maven检查idea的maven配置</li>
+</ul>
+<h2 id="配置：工程-pom-xml文件"><a href="#配置：工程-pom-xml文件" class="headerlink" title="配置：工程/pom.xml文件"></a>配置：工程/pom.xml文件</h2><ul>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application-executable-jar" target="_blank"> 文档</a></li>
+<li>配置父工程：<parent>spring-boot-starter-parent</li>
+<li>配置依赖：<dependency>spring-boot-starter-web</li>
+</ul>
+<h2 id="写程序"><a href="#写程序" class="headerlink" title="写程序"></a>写程序</h2><ul>
+<li><p>工程/src/main/java下建立包package01，包内写类 MainApplication 类内写main方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">public class MainApplication &#123;</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">        SpringApplication.run(MainApplication.class,args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>package01下建立包 controller ，包内写类XxxController（本例为HelloController）</p>
+</li>
+<li><p>写处理方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class HelloController &#123;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;&#x2F;hello&quot;)</span><br><span class="line">    public String handle01()&#123;</span><br><span class="line">        return &quot;Hello,Spring Boot 2&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>注解的介绍</p>
+<ul>
+<li>SpringBootSpplication：说明这是springboot主程序</li>
+<li>RestController：包括<ul>
+<li>ResponseBody：说明此controller返回字符串给浏览器</li>
+<li>Controller：说明这是一个Controller</li>
+</ul>
+</li>
+<li>RequestMapping(“/xxxx”)：将handle方法映射到 <a target="_blank" rel="noopener" href="http://locahost:8080/xxxx">http://locahost:8080/xxxx</a> 地址</li>
+</ul>
+</li>
+</ul>
+<h2 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h2><ul>
+<li>工程/src/main/resources/（新建）application.properties</li>
+<li>写入 server.port=8888 可以将端口修改为 8888</li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#common-application-properties-server" target="_blank">文档资料（修改配置）</a></li>
+</ul>
+<h2 id="创建可执行的jar包"><a href="#创建可执行的jar包" class="headerlink" title="创建可执行的jar包"></a>创建可执行的jar包</h2><ul>
+<li>导入插件：pom.xml 添加 build { { plugins { { plugin { { org.springframework.boot</li>
+<li><a href="https://www.bilibili.com/video/BV19K4y1L7MT?t=914&p=5" target="_blank">视频操作（13:46）</a></li>
+<li>打开 工程/src/target 所在目录，可以看到 jar 包</li>
+<li><strong>执行jar包</strong>：target目录中打开cmd，执行命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar 文件名.jar</span><br></pre></td></tr></table></figure>
+<h2 id="pom-xml标签的相关说明"><a href="#pom-xml标签的相关说明" class="headerlink" title="pom.xml标签的相关说明"></a>pom.xml标签的相关说明</h2><ul>
+<li><parent>标签进行版本控制，即指定一个版本，下面的<dependencies>版本均为此版本系列</li>
+</ul>
+<h2 id="stater"><a href="#stater" class="headerlink" title="stater"></a>stater</h2><ul>
+<li>只要引入starter，这个场景的所有常规需要的依赖我们都自动引入</li>
+<li>可以创建自己的starter，但不要以spring-boot开头命名</li>
+<li>所有场景启动器的最底层的依赖是 spring-boot-starter</li>
+</ul>
+<h2 id="自动配置"><a href="#自动配置" class="headerlink" title="自动配置"></a>自动配置</h2><ul>
+<li>举例：引入的web依赖，包括tomcat依赖，springMVC依赖</li>
+<li></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/13/Spring2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TanPro's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/13/Spring2/" itemprop="url">Spring2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-13T08:03:51+08:00">
+                2021-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="实验二：根据bean的类型从IOC容器中获取bean的实例"><a href="#实验二：根据bean的类型从IOC容器中获取bean的实例" class="headerlink" title="实验二：根据bean的类型从IOC容器中获取bean的实例"></a>实验二：根据bean的类型从IOC容器中获取bean的实例</h2><ul>
+<li>语法：<strong>ioc.getBean(Person.class);</strong></li>
+<li>要求<strong>ioc容器中只有一个对应的bean</strong> </li>
+</ul>
+<h2 id="实验三（1）：通过构造器为bean的属性赋值"><a href="#实验三（1）：通过构造器为bean的属性赋值" class="headerlink" title="实验三（1）：通过构造器为bean的属性赋值"></a>实验三（1）：通过构造器为bean的属性赋值</h2><ul>
+<li><strong>说明</strong>：之前在ioc.xml中使用property标签赋值，实际上是调用了类Person的getter和setter，现在我们要使用构造器为对象的属性赋值。</li>
+<li><strong>步骤</strong>：<ul>
+<li>ioc.xml中代码如下：</li>
+<li>然后用getBean(id);获取</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;person3&quot; class&#x3D;&quot;com.atguigu.bean.Person&quot;&gt;</span><br><span class="line">	&lt;constructor-arg name&#x3D;&quot;lastname&quot; value&#x3D;&quot;liming&quot;&gt;&lt;&#x2F;constructor-arg&gt;</span><br><span class="line">	&#x2F;&#x2F;剩下四个构造器参数同理，必须都写上否则报错</span><br><span class="line">&lt;&#x2F;bean&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>扩展</strong><ul>
+<li>constructor-arg中可以省略name属性，但是各个constructor-arg之间应该按顺序排列<ul>
+<li>此时可以在constructor-arg下建立子标签index来改变排序</li>
+</ul>
+</li>
+<li>如果遇到多个具有相同数量的参数的构造器重载的情况，那么这些构造器的参数的取同一个index对应的参数不同，需要通过在constructor-arg下建立子标签type来进行定位。</li>
+<li><strong>一般情况下以第一种方法通过name为属性赋值为主</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="实验三（2）：通过p名称空间为bean赋值"><a href="#实验三（2）：通过p名称空间为bean赋值" class="headerlink" title="实验三（2）：通过p名称空间为bean赋值"></a>实验三（2）：通过p名称空间为bean赋值</h2><ul>
+<li><strong>说明：p标签实际上就是property标签的简化使用版。它是bean标签的一个属性前缀而property是bean标签的子标签。</strong></li>
+<li><strong>步骤</strong><ul>
+<li>在ioc.xml中添加p标签<ul>
+<li>eclipse中打开ioc.xml文件，下方点击namespace勾选p标签，然后保存ioc.xml文件</li>
+<li>在ioc.xml中编辑类：</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;&quot; class&#x3D;&quot;&quot;</span><br><span class="line">	p:age&#x3D;&quot;&quot; p:email&#x3D;&quot;&quot; p:gender&#x3D;&quot;&quot; p:lastName&#x3D;&quot;&quot;&gt;</span><br><span class="line">	</span><br><span class="line">&lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="实验四：正确地为各种属性赋值"><a href="#实验四：正确地为各种属性赋值" class="headerlink" title="实验四：正确地为各种属性赋值"></a>实验四：正确地为各种属性赋值</h2><ul>
+<li><p><strong>说明</strong></p>
+<ul>
+<li>基本类型直接使用property<value>标签来赋值，而自定义类型和List、Map等就不行</li>
+</ul>
+</li>
+<li><p><strong>分类</strong></p>
+<ul>
+<li><p>赋null值</p>
+<ul>
+<li>方法：property标签加name属性和<null/>子标签</li>
+</ul>
+</li>
+<li><p>赋自定义类型对象</p>
+<ul>
+<li>方法1：property标签加<bean></bean>子标签<ul>
+<li>子标签加class属性可选id属性<ul>
+<li>如果写了id属性，它只供<bean>内部使用</li>
+</ul>
+</li>
+<li>子标签加property子标签</li>
+</ul>
+</li>
+<li>方法2：property标签加name属性和ref属性<ul>
+<li>name=”类中属性名”</li>
+<li>ref=”本ioc.xml中的待使用bean的id”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>赋list</p>
+<ul>
+<li>方法：<ul>
+<li>property标签+name属性+<list></list>子标签</li>
+<li><list></list>内加<bean>或<ref>，每一个<bean>或<ref>代表一个list元素</li>
+<li><ref bean="本ioc.xml中的待使用bean的id"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>赋map</p>
+<ul>
+<li>方法：<ul>
+<li>property { { map { { entry key value/value-ref { { bean</li>
+<li>value属性用来表示常规基本类型的值，子标签用来表示非常规的类型的值。(value也可以作为子标签)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>赋properties</p>
+<ul>
+<li>方法：<ul>
+<li>property name { { props { { prop key -value- /prop</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>使用util名称空间</p>
+<ul>
+<li>作用：<ul>
+<li>创建工具，便于引用</li>
+<li>相当于new LinkedHashMap()</li>
+</ul>
+</li>
+<li>方法：<ul>
+<li>定义：&lt;util:xxxx id=””&gt;</li>
+<li>使用：ref=”map的id”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>级联属性赋值</p>
+<ul>
+<li>说明：级联属性就是属性的属性</li>
+<li>方法：<ul>
+<li>通过 name=”属性.属性” 来定位</li>
+</ul>
+</li>
+<li>注意：<ul>
+<li>在使用 A.B 级联属性之前，应当先创建好 A 属性</li>
+<li>对于 ref 引用，对象A在任何一处的引用被改变，都会影响到在其他地方的引用以及对象A本身</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="课间练习出现问题汇总"><a href="#课间练习出现问题汇总" class="headerlink" title="课间练习出现问题汇总"></a>课间练习出现问题汇总</h2><ul>
+<li>没有空参构造器，导致使用property标签时出现错误</li>
+<li>property便签内要赋值给List时没有使用list子标签</li>
+</ul>
+<h2 id="总结代码"><a href="#总结代码" class="headerlink" title="总结代码"></a>总结代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&quot;</span><br><span class="line">	xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">	xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&#x2F;spring-beans.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;bean id&#x3D;&quot;computer01&quot; class&#x3D;&quot;com.atguigu.bean.Computer&quot;&gt;</span><br><span class="line">		&lt;property name&#x3D;&quot;brand&quot; value&#x3D;&quot;ASUS&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">	&lt;&#x2F;bean&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;bean id&#x3D;&quot;pen01&quot; class&#x3D;&quot;com.atguigu.bean.Pen&quot;&gt;</span><br><span class="line">		&lt;property name&#x3D;&quot;color&quot; value&#x3D;&quot;red&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">	&lt;&#x2F;bean&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;bean id&#x3D;&quot;excerciseBook01&quot; class&#x3D;&quot;com.atguigu.bean.ExcerciseBook&quot;&gt;</span><br><span class="line">		&lt;property name&#x3D;&quot;subject&quot; value&#x3D;&quot;Math&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">	&lt;&#x2F;bean&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;bean id&#x3D;&quot;student01&quot; class&#x3D;&quot;com.atguigu.bean.Student&quot;&gt;</span><br><span class="line">		&lt;property name&#x3D;&quot;computer&quot; ref&#x3D;&quot;computer01&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">		&lt;property name&#x3D;&quot;computer.brand&quot; value&#x3D;&quot;Apple&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">		&lt;property name&#x3D;&quot;pens&quot;&gt;</span><br><span class="line">			&lt;list&gt;</span><br><span class="line">				&lt;ref bean&#x3D;&quot;pen01&quot;&gt;&lt;&#x2F;ref&gt;</span><br><span class="line">				&lt;bean class&#x3D;&quot;com.atguigu.bean.Pen&quot;&gt;</span><br><span class="line">					&lt;property name&#x3D;&quot;color&quot; value&#x3D;&quot;green&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">				&lt;&#x2F;bean&gt;			</span><br><span class="line">			&lt;&#x2F;list&gt;</span><br><span class="line">		&lt;&#x2F;property&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;property name&#x3D;&quot;map&quot;&gt;</span><br><span class="line">			&lt;map&gt;</span><br><span class="line">				&lt;entry key-ref&#x3D;&quot;excerciseBook01&quot; value&#x3D;&quot;Math&quot;&gt;	</span><br><span class="line">				&lt;&#x2F;entry&gt;</span><br><span class="line">			&lt;&#x2F;map&gt;</span><br><span class="line">		&lt;&#x2F;property&gt;</span><br><span class="line">	&lt;&#x2F;bean&gt;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">&lt;&#x2F;beans&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="实验六"><a href="#实验六" class="headerlink" title="实验六"></a>实验六</h2><ul>
+<li><p>说明：</p>
+<ul>
+<li>通过继承实现bean配置信息的重用</li>
+</ul>
+</li>
+<li><p>方法</p>
+<ul>
+<li><p>bean标签 加属性 parent</p>
+<h2 id="实验七"><a href="#实验七" class="headerlink" title="实验七"></a>实验七</h2></li>
+</ul>
+</li>
+<li><p>说明：</p>
+<ul>
+<li>虚拟bean只能被当作parent继承，而不能被getBean()成为对象</li>
+</ul>
+</li>
+<li><p>方法</p>
+<ul>
+<li>bean标签 加属性 abstract=”true”</li>
+</ul>
+</li>
+</ul>
+<h2 id="实验八"><a href="#实验八" class="headerlink" title="实验八"></a>实验八</h2><ul>
+<li>说明：<ul>
+<li>bean 之间的相互依赖（只是改变创建的顺序）</li>
+<li>调用构造器时，顺序就是配置文件的顺序</li>
+</ul>
+</li>
+<li>方法<ul>
+<li>bean标签 加属性 depends-on=”id名”</li>
+</ul>
+</li>
+</ul>
+<h2 id="实验九（重要）"><a href="#实验九（重要）" class="headerlink" title="实验九（重要）"></a>实验九（重要）</h2><ul>
+<li>说明：<ul>
+<li>测试bean的作用域，分别测试单实例和多实例</li>
+<li>单实例：容器启动前就已经创建好对象并且保存在容器中，后续获取的都是这个对象</li>
+<li>多实例：容器启动不会创建对象，每次获取都会创建一个新的对象。</li>
+</ul>
+</li>
+<li>方法：<ul>
+<li>scope=”作用域名”</li>
+<li>作用域名有：<ul>
+<li>prototype:多实例的</li>
+<li>singleton:单实例的</li>
+<li>request:同一次请求创建一个Bean实例（没用）</li>
+<li>session:同一次会话创建一个Bean实例（没用）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="实验五（重要）"><a href="#实验五（重要）" class="headerlink" title="实验五（重要）"></a>实验五（重要）</h2><ul>
+<li><p>说明：</p>
+<ul>
+<li>工厂模式创建对象</li>
+<li>两种工厂：<ul>
+<li>静态工厂：直接调用 工厂类.工厂方法 获得对象</li>
+<li>实例工厂：新建工厂类对象 调用工厂方法 获得对象</li>
+</ul>
+</li>
+<li>两种工厂的区别：<ul>
+<li>静态工厂 类内工厂方法加static</li>
+<li>实例工厂 使用时需要先new</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>方法（静态工厂）：</p>
+<ul>
+<li>bean id class=”工厂类而非产品类” factory-mothod=”生产方法” { { constructor-arg name value</li>
+<li>其中的factory-method的作用是提醒这里要创建产品对象而不是工厂对象，并且指明了生产方法</li>
+<li>这里的constructor-arg表面是给构造器传参实际上是给生产方法传参</li>
+</ul>
+</li>
+<li><p>方法（实例工厂）：</p>
+<ul>
+<li>先配置工厂对象<ul>
+<li>bean id class</li>
+</ul>
+</li>
+<li>再配置产品对象<ul>
+<li>bean id class=”产品类” factory-bean=”工厂bean” factory-method=”生产方法” { { constructor-arg name value</li>
+</ul>
+</li>
+<li>说明：这种方法创建的产品不是反射创建的，而是工厂new出来的</li>
+</ul>
+</li>
+<li><p>通过 FactoryBean 接口创建类来实现工厂</p>
+<ul>
+<li>实现三个方法：getObject，getObjectType，isSingleton<ul>
+<li>getObject：是工厂的生产方法</li>
+<li>getObjectType：返回Xxx.class</li>
+<li>isSingleton：是单例吗？返回True或false</li>
+</ul>
+</li>
+<li>在xml文件中注册：<ul>
+<li>bean id=”id01” class=”实现接口的工厂的类路径”</li>
+</ul>
+</li>
+<li>测试：<ul>
+<li>ioc.getBean(“id01”) 会返回产品对象，这个对象不是在加载xml文件时创建的，而是在用getBeab 方法获取的时候创建的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;三个方法的实现</span><br><span class="line">public class GameFactory implements FactoryBean&lt;Book&gt;&#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public Book getObject() throws Exception &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">		Book book &#x3D; new Book();</span><br><span class="line">		book.setCategory(&quot;History&quot;);</span><br><span class="line">		book.setName(&quot;ThreeKingdoms&quot;);</span><br><span class="line">		return book;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public Class&lt;?&gt; getObjectType() &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">		</span><br><span class="line">		return Book.class;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public boolean isSingleton() &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;xml文件</span><br><span class="line">	&lt;bean id&#x3D;&quot;game01&quot; class&#x3D;&quot;com.atguigu.factory.GameStaticFactory&quot; factory-method&#x3D;&quot;getGame&quot;&gt;</span><br><span class="line">		&lt;constructor-arg name&#x3D;&quot;category&quot; value&#x3D;&quot;FPS&quot;&gt;&lt;&#x2F;constructor-arg&gt;		</span><br><span class="line">		&lt;constructor-arg name&#x3D;&quot;name&quot; value&#x3D;&quot;CS:GO&quot;&gt;&lt;&#x2F;constructor-arg&gt;</span><br><span class="line">	&lt;&#x2F;bean&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;bean id&#x3D;&quot;book01&quot; class&#x3D;&quot;com.atguigu.factory.GameFactory&quot;&gt;</span><br><span class="line">	&lt;&#x2F;bean&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="实验十：创建带有生命周期的bean"><a href="#实验十：创建带有生命周期的bean" class="headerlink" title="实验十：创建带有生命周期的bean"></a>实验十：创建带有生命周期的bean</h2><ul>
+<li>bean id class destroy-method init-method</li>
+</ul>
+<h2 id="实验十一：后置处理器"><a href="#实验十一：后置处理器" class="headerlink" title="实验十一：后置处理器"></a>实验十一：后置处理器</h2><ul>
+<li>添加类 MyBeanPostProcessor implements BeanPostProcessor</li>
+<li><a href="https://www.bilibili.com/video/BV1uE411C7CW?p=38" target="_blank">添加包（为了方便查看源码，1:42）</a></li>
+<li>实现类的两个方法：before和after</li>
+<li>具体实现顺序：<ul>
+<li>before + init + after</li>
+</ul>
+</li>
+</ul>
+<h2 id="实验十二：引用外部属性文件"><a href="#实验十二：引用外部属性文件" class="headerlink" title="实验十二：引用外部属性文件"></a>实验十二：引用外部属性文件</h2><ul>
+<li>数据库连接池作为单实例是最好的，可以让Spring管理连接池</li>
+<li>添加jar包：<ul>
+<li>mysql-connection-java–bin.jar</li>
+<li>c3p0-.jar</li>
+</ul>
+</li>
+<li>配置xml</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;dataSource&quot; class&#x3D;&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&gt;</span><br><span class="line">	&lt;property name&#x3D;&quot;user&quot; value&#x3D;&quot;root&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">	&lt;property name&#x3D;&quot;password&quot; value&#x3D;&quot;8477&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">	&lt;property name&#x3D;&quot;jdbcUrl&quot; value&#x3D;&quot;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;test&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">	&lt;property name&#x3D;&quot;driverClass&quot; value&#x3D;&quot;java.sql.Driver&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>测试程序</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void test4() throws SQLException&#123;</span><br><span class="line">	 ConfigurableApplicationContext ioc4 &#x3D; new ClassPathXmlApplicationContext(&quot;ioc2.xml&quot;);</span><br><span class="line">	 DataSource bean &#x3D; (DataSource) ioc4.getBean(&quot;dataSource&quot;);</span><br><span class="line">	 </span><br><span class="line">	 DataSource bean2 &#x3D; ioc4.getBean(DataSource.class);</span><br><span class="line">	 System.out.println(bean2.getConnection());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>注意</p>
+<ul>
+<li>导入DataSource类时注意类的全称：应该导sql.DataSource而不是另一个</li>
+<li>上述方法是使用bean来实现数据库连接的，下面尝试使用properties文件来实现</li>
+</ul>
+</li>
+<li><p>添加 conf/xxxx.properties文件</p>
+</li>
+<li><p>properties文件中写入连接数据库需要的key-value对</p>
+</li>
+<li><p>将properties文件添加到xml文件：</p>
+<ul>
+<li>需要使用context名称空间</li>
+<li>context:property-placeholder location=”classpath:xxxx.properties”</li>
+</ul>
+</li>
+<li><p>在xml文件中使用properties文件中的键值对：</p>
+<ul>
+<li>如果properties文件中写为：key=value</li>
+<li>那么xml文件中写为：value=”${key}”</li>
+<li>注意：username是spring的key中的一个关键字，所以properties文件中的key不能使用username</li>
+</ul>
+</li>
+<li><p><strong>注意：配置文件必须放在源码文件夹，而不是普通文件夹，在eclipse中这两种文件夹的图标是不同的</strong></p>
+</li>
+<li><p><strong>注意：xml中的数据库连接池的properties以格式”${}”来使用的话，注意双引号之间不要加多余的空格</strong></p>
+</li>
+</ul>
+<h2 id="实验十三：基于xml的自动配置"><a href="#实验十三：基于xml的自动配置" class="headerlink" title="实验十三：基于xml的自动配置"></a>实验十三：基于xml的自动配置</h2><ul>
+<li>如果自定义了类A，它有许多属性，如果想在xml文件中为此类的一个对象a进行配置，则需要对这些属性依次配置</li>
+<li>现在发现xml中有的bean正好对应部分属性，并且想让xml自动把这些bean配置给这些属性，就可以使用自动配置</li>
+<li>使用方法为使用 bean autowire=””<ul>
+<li>default：不自动装配</li>
+<li>byName：通过属性名=bean的id名 来进行配置</li>
+<li>byType：通过属性类型=bean的类型 来进行配置</li>
+<li>constructor：通过构造器来进行装配<ul>
+<li>先按照构造器参数的类型在xml文件中找bean</li>
+<li>如果找不到，配置null</li>
+<li>如果找到多个，按照参数名称找bean</li>
+<li>如果找不到，配置null</li>
+<li>不管找到找不到，都<strong>不会报错</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="实验十四：SpEL测试"><a href="#实验十四：SpEL测试" class="headerlink" title="实验十四：SpEL测试"></a>实验十四：SpEL测试</h2><ul>
+<li>Spring Expression Language</li>
+<li>value=”#{12345.67*12}”</li>
+<li>value=”#{booke01.bookName}” (book01是id名，bookName是属性名)</li>
+<li>value=”#{car}” (car是一个bean的id)</li>
+<li>value=”#{}”</li>
+<li>value=”#{}”</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/11/JVM1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1052,7 +2231,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1063,7 +2242,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
