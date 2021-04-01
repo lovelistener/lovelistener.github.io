@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="环境搭建vagrant创建虚拟机 下载vagrant并安装 命令行 ** vagrant**检查是否成功安装 ** vagrant init centos&#x2F;7 创建一个 vagrant file** ** vagrant up**下载镜像，驱动虚拟容器 ** vagrant ssh**cmd连接虚拟机 ** exit **退出 ** vagrant up**启动linux环境 由于这个命令是在C:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="谷粒商城开发实录（一）、环境">
+<meta property="og:url" content="http://example.com/2021/03/29/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E5%BC%80%E5%8F%91%E5%AE%9E%E5%BD%95/index.html">
+<meta property="og:site_name" content="TanPro&#39;s Blog">
+<meta property="og:description" content="环境搭建vagrant创建虚拟机 下载vagrant并安装 命令行 ** vagrant**检查是否成功安装 ** vagrant init centos&#x2F;7 创建一个 vagrant file** ** vagrant up**下载镜像，驱动虚拟容器 ** vagrant ssh**cmd连接虚拟机 ** exit **退出 ** vagrant up**启动linux环境 由于这个命令是在C:">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-03-29T14:55:51.000Z">
+<meta property="article:modified_time" content="2021-04-01T12:08:43.526Z">
+<meta property="article:author" content="LoveListener">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/03/29/谷粒商城开发实录/"/>
+
+
+
+
+
+  <title>谷粒商城开发实录（一）、环境 | TanPro's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TanPro's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Hello World!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/29/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E5%BC%80%E5%8F%91%E5%AE%9E%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TanPro's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">谷粒商城开发实录（一）、环境</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-29T22:55:51+08:00">
+                2021-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index">
+                    <span itemprop="name">项目</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><h2 id="vagrant创建虚拟机"><a href="#vagrant创建虚拟机" class="headerlink" title="vagrant创建虚拟机"></a>vagrant创建虚拟机</h2><ul>
+<li>下载<strong>vagrant</strong>并安装</li>
+<li>命令行<ul>
+<li>** vagrant**检查是否成功安装</li>
+<li>** vagrant init centos/7 <strong>创建一个</strong> vagrant file**</li>
+<li>** vagrant up**下载镜像，驱动虚拟容器</li>
+<li>** vagrant ssh**cmd连接虚拟机</li>
+<li>** exit **退出</li>
+<li>** vagrant up**启动linux环境<ul>
+<li>由于这个命令是在C:\Users\listen_to_love下执行的，所以必须保证这个文件夹中有vagrantfile</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>虚拟机的** 网络设置 **<ul>
+<li>修改vagrantfile中的config.vm.network字段</li>
+<li>重启虚拟机：** vagrant reload**</li>
+<li>重新开启虚拟机并登陆：up、ssh</li>
+<li>互相** ping **一下看是否可以ping通</li>
+</ul>
+</li>
+<li>虚拟机安装** docker **<ul>
+<li>** docker **获取一些软件的镜像，并且启动软件</li>
+<li>** docker <strong>去软件仓库(**dockerhub</strong>)中把镜像下载到本机并且运行，每个镜像在一个容器中运行，容器就是运行环境，容器之间相互隔离。</li>
+<li>** docker官网 **找<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/centos/">帮助文档</a><ul>
+<li> 卸载旧版本</li>
+<li> 设置仓库</li>
+<li> 安装docker</li>
+<li> <strong>注意，这里我用官方文档安装时失败了，删除虚拟机后重新安装并且照菜鸟驿站来安装docker成功了。</strong></li>
+<li> 启动docker</li>
+<li> 检查docker版本</li>
+<li> 设置开机自启动</li>
+<li> 配置<a target="_blank" rel="noopener" href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors">阿里云加速服务</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>docker下载** mysql **<ul>
+<li> ** sudo docker pull mysql:5.7**</li>
+<li> 运行系列命令：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 3306:3306 --name mysql \		&#x2F;&#x2F;docker run象征着一个新的mysql的启动，本机端口3306对应虚拟机端口3306</span><br><span class="line"></span><br><span class="line"> -v &#x2F;mydata&#x2F;mysql&#x2F;log:&#x2F;var&#x2F;log&#x2F;mysql \</span><br><span class="line">&#x2F;&#x2F;冒号表示将linux的文件地址映射到mysq容器中对应的文件地址</span><br><span class="line">&#x2F;&#x2F;log为日志文件，lib为持久化数据文件，etc为配置文件</span><br><span class="line"> -v &#x2F;mydata&#x2F;mysql&#x2F;data:&#x2F;var&#x2F;lib&#x2F;mysql \</span><br><span class="line"> -v &#x2F;mydata&#x2F;mysql&#x2F;conf:&#x2F;etc&#x2F;mysql \</span><br><span class="line"></span><br><span class="line"> -e MYSQL_ROOT_PASSWORD&#x3D;root \</span><br><span class="line"> -d mysql:5.7</span><br><span class="line">&#x2F;&#x2F;相当于启动了一个mysql，设置好了端口号和密码</span><br><span class="line"></span><br><span class="line">docker ps &#x2F;&#x2F;检查mysql是否安装成功</span><br><span class="line"></span><br><span class="line">docker exec -it mysql &#x2F;bin&#x2F;bash</span><br><span class="line">ls</span><br><span class="line">&#x2F;&#x2F;进入容器内部去看mysql容器的文件结构</span><br><span class="line"></span><br><span class="line">whereis mysql	&#x2F;&#x2F;找到上述的三个文件夹</span><br><span class="line"></span><br><span class="line">修改配置文件：</span><br><span class="line">vi &#x2F;mydata&#x2F;mysql&#x2F;conf</span><br><span class="line">输入以下信息：</span><br><span class="line">[client]</span><br><span class="line">default-character-set&#x3D;utf8</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set&#x3D;utf8</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">init_connect&#x3D;&#39;SET collation_connection &#x3D; utf8_unicode_ci&#39;</span><br><span class="line">init_connect&#x3D;&#39;SET NAMES utf8&#39;</span><br><span class="line">character-set-server&#x3D;utf8</span><br><span class="line">collation-server&#x3D;utf8_unicode_ci</span><br><span class="line">skip-character-set-client-handshake</span><br><span class="line">skip-name-resolve</span><br></pre></td></tr></table></figure>
+<ul>
+<li>docker下载** redis**<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 6379:6379 --name redis -v &#x2F;mydata&#x2F;redis&#x2F;data:&#x2F;data \</span><br><span class="line"> -v &#x2F;mydata&#x2F;redis&#x2F;conf&#x2F;redis.conf:&#x2F;etc&#x2F;redis&#x2F;redis.conf \</span><br><span class="line"> -d redis redis-server &#x2F;etc&#x2F;redis&#x2F;redis.conf</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装redis<strong>可视化软件</strong></li>
+<li>配置redis，<a target="_blank" rel="noopener" href="https://redis.io/topics/config">网址</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>统一<strong>开发环境</strong></p>
+<ul>
+<li>Maven<ul>
+<li>配置阿里云加速<ul>
+<li>F:\maven\apache-maven-3.6.3\conf\settings.xml</li>
+<li>文件修改<strong>mirrors</strong>标签和<strong>profiles</strong>标签，还有<strong>localrepository</strong>地址</li>
+</ul>
+</li>
+<li>配置jdk1.8编译项目</li>
+</ul>
+</li>
+<li>idea安装插件：<strong>lombok</strong>和<strong>mybatisx</strong></li>
+<li>vscode安装插件</li>
+</ul>
+</li>
+<li><p><strong>git和gitee</strong></p>
+<ul>
+<li>安装git,设置<strong>name</strong>和<strong>email</strong></li>
+<li>将密钥保存到<strong>码云</strong></li>
+<li>验证</li>
+</ul>
+</li>
+<li><p>创建项目<strong>目录结构</strong></p>
+<ul>
+<li>将码云上的项目<strong>clone</strong>到idea中，然后当前项目新建各个<strong>服务module</strong>(product,ware,order,member,coupon,注意选择旧版本的java和springboot)</li>
+<li>设置模版pom.xml文件</li>
+<li>设置.gitignore文件</li>
+<li>将需要进行版本控制的文件<strong>add to vcs</strong></li>
+<li><strong>commit到码云</strong></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/maven/maven-pom.html">maven的简单了解</a>：</p>
+<ul>
+<li>是 Apache 下的一个<strong>纯 Java 开发</strong>的开源项目</li>
+<li>是一个<strong>项目管理工具</strong>，可以对 Java 项目进行<strong>构建</strong>、<strong>依赖管理</strong>。</li>
+<li>POM（项目对象模型，项目对象模型）是Maven工程的<strong>基本工作单元</strong>，是一个<strong>XML文件</strong>，包含了项目的基本信息，用于描述项目<strong>如何构建，声明项目依赖</strong>，等等。</li>
+<li>执行任务或目标时，Maven会在当前目录中查找POM。它读取POM，获取所需的配置信息，然后执行目标。</li>
+<li>&lt;！-模型版本-&gt; <strong>&lt; modelVersion &gt;</strong> 4.0.0 &lt;/ modelVersion &gt;</li>
+<li>&lt;！-公司或组织的唯一标志，并且配置时生成的路径也是转换生成，如com.companyname.project-group，maven会将该项目打成的jar包放本地路径：/ com /公司名称/项目组-&gt; **&lt; groupId &gt;**com.companyname.project-group &lt;/ groupId &gt; </li>
+<li>&lt;！-项目的唯一ID，一个groupId下面可能多个项目，就是靠artifactId来区分的-&gt; <strong>&lt; artifactId &gt;</strong></li>
+<li>&lt;！-版本号-&gt; <strong><version></strong> 1.0 </version></li>
+<li>所有POM文件都需要项目元素和三个必需长度：groupId，artifactId，version。</li>
+<li>所有的POM都<strong>继承自一个父POM</strong>（无论是否显式定义了这个父POM）。父POM包含了一些可以被继承的样式设置。因此，当Maven发现需要下载POM中的依赖时，它会到Super POM中配置的替代仓库<a target="_blank" rel="noopener" href="http://repo1.maven.org/maven2%E5%8E%BB%E4%B8%8B%E8%BD%BD%E3%80%82">http://repo1.maven.org/maven2去下载。</a></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>参考资料：<br>maven中<packaging>标签规定项目的打包方式：默认为jar，还有war和pom，<a target="_blank" rel="noopener" href="https://blog.csdn.net/xldmx/article/details/95196139">它们有什么区别？</a>(关键词：父级，聚合；服务器)<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/699ed86028c2">gitignore的作用是什么？</a>(关键词：不需要版本控制，通配符)</p>
+</blockquote>
+<ul>
+<li>数据库初始化<ul>
+<li><strong>powerDesigner</strong>下载、破解、打开数据库</li>
+<li>虚拟机设置mysql和redis开机自启动</li>
+<li>用sqlyog打开数据库，创建数据库：oms,pms,sms,ums,wms（订单、产品、销售、用户、库存），导入各自的sql文件并执行。</li>
+</ul>
+</li>
+</ul>
+<h3 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h3><ul>
+<li>如何删除docker中的容器：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41945228/article/details/92831173">网站</a></li>
+<li>docker ps出现daemon无法连接：systemctl start docker</li>
+<li>注意到自己的SpringCloud和Springboot的版本和老师的不一致，本来打算重装旧版idea，询问之后知道了修改pom重新拉取依赖就可以，看来新手入门要多问老师，此外自己第一次尝试拉取时没有直接在本项目上动刀，而是新建了一个项目尝试了一下，确认有效后才开始。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/02/21/mybatis1/" rel="next" title="mybatis1">
+                <i class="fa fa-chevron-left"></i> mybatis1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/photo.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">1.</span> <span class="nav-text">环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vagrant%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">1.1.</span> <span class="nav-text">vagrant创建虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.1.</span> <span class="nav-text">一些问题</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LoveListener</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

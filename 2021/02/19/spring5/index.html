@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="每一个不曾起舞的日子，都是对生命的辜负。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="http://example.com/tags/index.html">
+<meta name="description" content="准备 导包 写配置  实验一：测试数据源 写properties文件 jdbc.user&#x3D;root jdbc.password&#x3D;8477 jdbc.jdbcUrl&#x3D;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;数据库名字 jdbc.driverClass&#x3D;com.mysql.jdbc.Driver   写配置文件 引入外部配置文件：context:property-placeholder">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring事务：jdbcTemplate的使用">
+<meta property="og:url" content="http://example.com/2021/02/19/spring5/index.html">
 <meta property="og:site_name" content="TanPro&#39;s Blog">
-<meta property="og:description" content="每一个不曾起舞的日子，都是对生命的辜负。">
+<meta property="og:description" content="准备 导包 写配置  实验一：测试数据源 写properties文件 jdbc.user&#x3D;root jdbc.password&#x3D;8477 jdbc.jdbcUrl&#x3D;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;数据库名字 jdbc.driverClass&#x3D;com.mysql.jdbc.Driver   写配置文件 引入外部配置文件：context:property-placeholder">
 <meta property="og:locale">
-<meta property="article:published_time" content="2021-02-01T03:50:06.000Z">
-<meta property="article:modified_time" content="2021-02-01T06:13:01.611Z">
+<meta property="article:published_time" content="2021-02-19T10:50:35.000Z">
+<meta property="article:modified_time" content="2021-02-19T13:57:03.991Z">
 <meta property="article:author" content="LoveListener">
 <meta name="twitter:card" content="summary">
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/tags/"/>
+  <link rel="canonical" href="http://example.com/2021/02/19/spring5/"/>
 
 
 
 
 
-  <title>标签 | TanPro's Blog</title>
+  <title>spring事务：jdbcTemplate的使用 | TanPro's Blog</title>
   
 
 
@@ -250,40 +250,195 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/19/spring5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TanPro's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">标签</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 3 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12px; color: #ccc">前端</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 12px; color: #ccc">编程语言</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 12px; color: #ccc">计算机</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">spring事务：jdbcTemplate的使用</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-19T18:50:35+08:00">
+                2021-02-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
+<li>导包</li>
+<li>写配置</li>
+</ul>
+<h1 id="实验一：测试数据源"><a href="#实验一：测试数据源" class="headerlink" title="实验一：测试数据源"></a>实验一：测试数据源</h1><ul>
+<li>写properties文件<ul>
+<li>jdbc.user=root</li>
+<li>jdbc.password=8477</li>
+<li>jdbc.jdbcUrl=jdbc:mysql://localhost:3306/数据库名字</li>
+<li>jdbc.driverClass=com.mysql.jdbc.Driver</li>
+</ul>
+</li>
+<li>写配置文件<ul>
+<li>引入外部配置文件：context:property-placeholder location=”classpath:配置文件名.properties”</li>
+<li>写bean<ul>
+<li>bean id=”dataSource” class=”xxx.ComboPooledDataSource” { {</li>
+<li>property name value=”${jdbc.user}”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>导入spring的数据库模块<ul>
+<li>jdbc,orm,tx三个包导入</li>
+</ul>
+</li>
+<li>写代码<ul>
+<li>使用jdbcTemplate类，它的一个构造器需要传入一个datasource对象</li>
+</ul>
+</li>
+</ul>
+<h1 id="实验二：更新数据"><a href="#实验二：更新数据" class="headerlink" title="实验二：更新数据"></a>实验二：更新数据</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String sql &#x3D; &quot;update employee set salary&#x3D;? where emp_id&#x3D;?&quot;</span><br><span class="line">int update &#x3D; jdbcTemplate.update(sql, 1300.00,5);</span><br><span class="line">&#x2F;&#x2F;返回值是修改的行数</span><br></pre></td></tr></table></figure>
+<h1 id="实验三：批量插入"><a href="#实验三：批量插入" class="headerlink" title="实验三：批量插入"></a>实验三：批量插入</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Sring sql &#x3D; &quot;insert into emplooyee(emp_name,salary) values(?,?)&quot;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;使用batchUpdate(String sql,List&lt;Object[]&gt; batchArgs);方法</span><br><span class="line"></span><br><span class="line">List&lt;Object[]&gt; batchArgs &#x3D; new ArrayList&lt;Object[]&gt;();</span><br><span class="line">batchArgs.add(new Object[]&#123;&quot;张三&quot;,1111&#125;;</span><br><span class="line">batchArgs.add();</span><br><span class="line">...</span><br><span class="line">int[] is &#x3D; jdbcTemplate.batchUpdate(sql,batchArgs);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/02/18/Spring4/" rel="next" title="aop的一些细节问题">
+                <i class="fa fa-chevron-left"></i> aop的一些细节问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/02/20/springMVC1/" rel="prev" title="springMVC1">
+                springMVC1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -316,8 +471,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -381,6 +545,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%B8%80%EF%BC%9A%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="nav-number">2.</span> <span class="nav-text">实验一：测试数据源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE"><span class="nav-number">3.</span> <span class="nav-text">实验二：更新数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%B8%89%EF%BC%9A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5"><span class="nav-number">4.</span> <span class="nav-text">实验三：批量插入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text"></span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
